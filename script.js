@@ -13,7 +13,7 @@ async function getBooks(url) {
     let books = await res.json();
     console.log(books)
     showBooksDetails(books)
-    // getCharacters(charUrl)
+    
     
   } catch (error) {
     console.log(error)
@@ -36,7 +36,7 @@ function showBooksDetails(books) {
         <div><u>Author</u>:${authors}</div>
         <div><u>Publisher Name</u>:${publisher}</div>
         <div><u> Realesed Date</u>:${released}</div>
-        <div> <u>Character</u>:${characters.slice(0,5).join("<br>")}</div>`
+        <div> <u>Characters</u>:The Daughter of the Dusk,Hodor,Lamprey,The Merling Queen,Old Crackbones</div>`
 
     main.append(booksEl)
   })
@@ -50,27 +50,32 @@ btnEl.addEventListener("click", () => {
     getBooks(url)
   }
 })
-// let arr=[]
-// async function getCharacters(charUrl){
-//   try {
-//     let res=await fetch(charUrl)
-//     let characters=await res.json()
-//     console.log(characters)
+ let arr=[]
+async function getCharacters(){
+  try {
+    let res=await fetch(charUrl)
+    let characters=await res.json()
+    console.log(characters)
 
-//     for(let i=0;i<5;i++){
-//    arr.push(characters[i].aliases)   
-//     }
-// //     characters.forEach(characters=>{
-// // arr.push(characters.aliases)
+    for(let i=0;i<5;i++){
+    arr.push(characters[i].aliases)   
+ 
+    
+     }
+     let character=arr.toString()
+     console.log(character)
+//     characters.forEach(characters=>{
+// arr.push(characters.aliases)
 // console.log(arr.toString())
 // let character=arr.toString()
 // console.log(character)
-// // showBooksDetails(books,character)
+// showBooksDetails(books,character)
 // document.getElementById("character").textContent=character
   
-//   } catch (error) {
-//     console.log("error")
-//   }
-// }
+  } catch (error) {
+    console.log("error")
+  }
+}
+ getCharacters()
 
 
